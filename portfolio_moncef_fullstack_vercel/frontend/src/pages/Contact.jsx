@@ -13,33 +13,37 @@ export default function Contact() {
   }
 
   async function handleSubmit(event) {
-    event.preventDefault();
-    setStatus('');
-    setError('');
-    setIsLoading(true);
+  event.preventDefault();
+  setStatus('');
+  setError('');
+  setIsLoading(true);
 
-    try {
-      const response = await fetch("https://formspree.io/f/mnjrjqgr", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-  body: JSON.stringify({
-    email,
-    subject,
-    message,
-  }),
-});
+  try {
+    const response = await fetch('https://formspree.io/f/mnjrjqgr', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      }),
+    });
 
-      setStatus(response.message || 'Message envoyé avec succès.');
-      setFormData({ email: '', subject: '', message: '' });
-    } catch (err) {
-      setError(err.message || 'Impossible d’envoyer le message pour le moment.');
-    } finally {
-      setIsLoading(false);
+    if (!response.ok) {
+      throw new Error("Impossible d’envoyer le message pour le moment.");
     }
+
+    setStatus('Message envoyé avec succès.');
+    setFormData({ email: '', subject: '', message: '' });
+  } catch (err) {
+    setError(err.message || 'Impossible d’envoyer le message pour le moment.');
+  } finally {
+    setIsLoading(false);
   }
+}
 
   return (
     <section className="contact-page page-enter">
