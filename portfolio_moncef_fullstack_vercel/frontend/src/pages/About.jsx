@@ -11,14 +11,15 @@ export default function About() {
           <p className="eyebrow">À propos</p>
           <h1>Moncef, futur développeur web</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium, lorem sed
-            feugiat commodo, nibh sem fermentum risus, vitae facilisis neque risus id lorem.
-            Suspendisse potenti. Praesent sed sapien ac lorem interdum tincidunt.
+            Je m’appelle Moncef Houaoui et je suis actuellement en reconversion professionnelle vers le développement web. Curieux, motivé et sérieux.
+            J’aime apprendre de nouvelles technologies et progresser à travers des projets concrets. 
+            Mon objectif est de continuer à développer mes compétences afin de construire des applications modernes, utiles et agréables à utiliser.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Remplace ce texte par ton
-            parcours, tes objectifs, tes qualités et ce que tu recherches dans une alternance ou un
-            stage.
+            Je me forme principalement au développement web avec des technologies comme HTML, CSS, JavaScript et React pour la partie frontend. 
+            J’ai également commencé à travailler sur la logique backend avec Node.js, Express et les API REST. 
+            À travers mes projets, j’apprends à créer des interfaces propres, responsives et interactives, tout en comprenant la structure d’une application complète. 
+            Je suis aussi prêt à me former sur d’autres langages, frameworks ou outils selon les besoins d’un projet ou d’une entreprise.
           </p>
         </div>
       </section>
