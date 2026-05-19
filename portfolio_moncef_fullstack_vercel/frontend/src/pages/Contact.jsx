@@ -19,11 +19,18 @@ export default function Contact() {
     setIsLoading(true);
 
     try {
-      const response = await apiFetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch("https://formspree.io/f/mnjrjqgr", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+  body: JSON.stringify({
+    email,
+    subject,
+    message,
+  }),
+});
 
       setStatus(response.message || 'Message envoyé avec succès.');
       setFormData({ email: '', subject: '', message: '' });
