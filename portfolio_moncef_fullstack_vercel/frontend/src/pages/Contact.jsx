@@ -1,57 +1,68 @@
 import { useState } from 'react';
-import { apiFetch } from '../utils/api.js';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({
+    email: '',
+    subject: '',
+    message: '',
+  });
+
   const [status, setStatus] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setFormData((current) => ({ ...current, [name]: value }));
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
   }
 
   async function handleSubmit(event) {
-  event.preventDefault();
-  setStatus('');
-  setError('');
-  setIsLoading(true);
+    event.preventDefault();
 
-  try {
-    const response = await fetch('https://formspree.io/f/mnjrjqgr', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      }),
-    });
+    setStatus('');
+    setError('');
+    setIsLoading(true);
 
-    if (!response.ok) {
-      throw new Error("Impossible d’envoyer le message pour le moment.");
+    try {
+      const response = await fetch('https://formspree.io/f/mnjrjqgr', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: new FormData(event.currentTarget),
+      });
+
+      if (!response.ok) {
+        throw new Error("Impossible d’envoyer le message pour le moment.");
+      }
+
+      setStatus('Message envoyé avec succès.');
+      setFormData({
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } catch (err) {
+      setError(err.message || 'Impossible d’envoyer le message pour le moment.');
+    } finally {
+      setIsLoading(false);
     }
-
-    setStatus('Message envoyé avec succès.');
-    setFormData({ email: '', subject: '', message: '' });
-  } catch (err) {
-    setError(err.message || 'Impossible d’envoyer le message pour le moment.');
-  } finally {
-    setIsLoading(false);
   }
-}
 
   return (
     <section className="contact-page page-enter">
       <div className="contact-card">
         <p className="eyebrow">Contact</p>
+
         <h1>Me contacter</h1>
+
         <p className="contact-intro">
-          Une question, une proposition ou une opportunité ? Tu peux m’envoyer un message directement depuis ce formulaire.
+          Une question, une proposition ou une opportunité ? Tu peux m’envoyer
+          un message directement depuis ce formulaire.
         </p>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -79,7 +90,7 @@ export default function Contact() {
           </label>
 
           <label>
-            Message
+            Message <span aria-hidden="true">*</span>
             <textarea
               name="message"
               value={formData.message}
