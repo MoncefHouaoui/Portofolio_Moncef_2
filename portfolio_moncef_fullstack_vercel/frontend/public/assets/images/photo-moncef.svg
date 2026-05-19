@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+  <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#7c5cff"/><stop offset="1" stop-color="#00d4ff"/></linearGradient></defs>
+  <rect width="900" height="1100" rx="60" fill="#151a33"/>
+  <circle cx="450" cy="370" r="150" fill="url(#g)" opacity=".9"/>
+  <path d="M205 900c36-186 147-285 245-285s209 99 245 285" fill="url(#g)" opacity=".72"/>
+  <text x="450" y="1010" text-anchor="middle" font-family="Arial" font-size="42" font-weight="700" fill="#ffffff">Remplace par ta photo</text>
+</svg>

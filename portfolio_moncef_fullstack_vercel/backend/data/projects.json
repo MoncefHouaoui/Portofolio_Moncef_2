@@ -1,0 +1,32 @@
+{
+  "projet-1": {
+    "id": "projet-1",
+    "order": 1,
+    "title": "Projet 1",
+    "name": "Kasa",
+    "subtitle": "Site de location immobilière réalisé avec React.",
+    "coverImage": "/assets/images/screen-kasa.png",
+    "images": [
+      "/assets/images/screen-kasa.png"
+    ],
+    "gradient": "linear-gradient(135deg, rgba(124, 92, 255, 0.72), rgba(13, 16, 33, 0.82))",
+    "description": "Kasa est un projet d’interface web inspiré d’un site de location immobilière. Il permet de présenter une page d’accueil moderne, une navigation simple et des cartes de logements. Remplace ce texte par ta propre description complète du projet.",
+    "technologies": "React, JavaScript, HTML, CSS. Tu peux compléter avec les outils réellement utilisés pendant le développement du projet.",
+    "feeling": "Ce projet permet de travailler la structure d’une application React, la navigation entre les pages et l’intégration d’une maquette propre. Remplace ce texte par ton ressenti personnel."
+  },
+  "projet-2": {
+    "id": "projet-2",
+    "order": 2,
+    "title": "Projet 2",
+    "name": "Mon Vieux Grimoire",
+    "subtitle": "Application de gestion et de notation de livres.",
+    "coverImage": "/assets/images/screen-grimoire.png",
+    "images": [
+      "/assets/images/screen-grimoire.png"
+    ],
+    "gradient": "linear-gradient(135deg, rgba(0, 212, 255, 0.62), rgba(13, 16, 33, 0.86))",
+    "description": "Mon Vieux Grimoire est une application autour des livres. Elle permet de présenter une bibliothèque, d’ajouter des livres et d’afficher des informations comme le titre, l’auteur, l’année, le genre et la note. Remplace ce texte par ta description complète.",
+    "technologies": "React, JavaScript, Node.js, Express, API REST, HTML, CSS. Tu peux adapter cette liste selon les vraies technologies utilisées.",
+    "feeling": "Ce projet permet de travailler la connexion entre le frontend et le backend, la gestion de données et l’organisation d’une application plus complète. Remplace ce texte par ton ressenti personnel."
+  }
+}
