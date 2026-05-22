@@ -14,9 +14,9 @@ const IS_VERCEL = process.env.VERCEL === '1';
 const SEED_DATA_FILE = join(__dirname, 'data', 'projects.json');
 const DATA_FILE = IS_VERCEL ? join('/tmp', 'portfolio-moncef-projects.json') : SEED_DATA_FILE;
 const UPLOAD_DIR = IS_VERCEL ? join('/tmp', 'portfolio-moncef-uploads') : join(__dirname, 'uploads');
-const VALID_EMAIL = 'moncef@test.fr';
-const VALID_PASSWORD = 'moncef';
-const AUTH_TOKEN = 'moncef-portfolio-token';
+const VALID_EMAIL = process.env.VALID_EMAIL;
+const VALID_PASSWORD = process.env.VALID_PASSWORD;
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
 
 if (!existsSync(UPLOAD_DIR)) {
   await mkdir(UPLOAD_DIR, { recursive: true });
@@ -111,7 +111,7 @@ async function sendContactEmail({ email, subject, message }) {
 
   await transporter.sendMail({
     from: `Portfolio de Moncef <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
-    to: 'houaouimoncef@outlook.fr',
+    to: process.env.CONTACT_EMAIL,
     replyTo: email,
     subject: cleanSubject,
     text: `Email de contact : ${email}\nObjet : ${cleanSubject}\n\nMessage :\n${message}`,

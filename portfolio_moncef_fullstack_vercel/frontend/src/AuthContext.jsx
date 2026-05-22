@@ -39,10 +39,10 @@ export function AuthProvider({ children }) {
       setToken(data.token);
       return data.user;
     } catch (error) {
-      if (cleanEmail === 'moncef@test.fr' && password === 'moncef') {
-        const fallbackUser = { email: 'moncef@test.fr', name: 'Moncef' };
+      if (cleanEmail === import.meta.env.VITE_VALID_EMAIL && password === import.meta.env.VITE_VALID_PASSWORD) {
+        const fallbackUser = { email: import.meta.env.VITE_VALID_EMAIL, name: 'Moncef' };
         setUser(fallbackUser);
-        setToken('moncef-portfolio-token');
+        setToken(import.meta.env.VITE_AUTH_TOKEN);
         return fallbackUser;
       }
 
