@@ -39,14 +39,7 @@ export function AuthProvider({ children }) {
       setToken(data.token);
       return data.user;
     } catch (error) {
-      if (cleanEmail === import.meta.env.VITE_VALID_EMAIL && password === import.meta.env.VITE_VALID_PASSWORD) {
-        const fallbackUser = { email: import.meta.env.VITE_VALID_EMAIL, name: 'Moncef' };
-        setUser(fallbackUser);
-        setToken(import.meta.env.VITE_AUTH_TOKEN);
-        return fallbackUser;
-      }
-
-      throw new Error(error.message || 'Connexion impossible. Lance bien le backend avec npm run dev depuis le dossier principal.');
+      throw new Error(error.message || 'Connexion impossible. Vérifie que le backend est bien lancé.');
     }
   }
 

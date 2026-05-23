@@ -1,10 +1,12 @@
+import bcrypt from 'bcryptjs';
 import cors from 'cors';
 import express from 'express';
+import jwt from 'jsonwebtoken';
 import multer from 'multer';
 import nodemailer from 'nodemailer';
 import { mkdir, readFile, writeFile, unlink } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { dirname, extname, join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -15,8 +17,8 @@ const SEED_DATA_FILE = join(__dirname, 'data', 'projects.json');
 const DATA_FILE = IS_VERCEL ? join('/tmp', 'portfolio-moncef-projects.json') : SEED_DATA_FILE;
 const UPLOAD_DIR = IS_VERCEL ? join('/tmp', 'portfolio-moncef-uploads') : join(__dirname, 'uploads');
 const VALID_EMAIL = process.env.VALID_EMAIL;
-const VALID_PASSWORD = process.env.VALID_PASSWORD;
-const AUTH_TOKEN = process.env.AUTH_TOKEN;
+const JWT_SECRET = process.env.JWT_SECRET;
+const VALID_PASSWORD_HASH = await bcrypt.hash(process.env.VALID_PASSWORD, 10);
 
 if (!existsSync(UPLOAD_DIR)) {
   await mkdir(UPLOAD_DIR, { recursive: true });
@@ -71,11 +73,12 @@ function requireAuth(request, response, next) {
   const authHeader = request.headers.authorization || '';
   const token = authHeader.replace('Bearer ', '');
 
-  if (token !== AUTH_TOKEN) {
+  try {
+    jwt.verify(token, JWT_SECRET);
+    next();
+  } catch {
     return response.status(401).json({ message: 'Tu dois être connecté pour modifier ce projet.' });
   }
-
-  next();
 }
 
 
@@ -168,12 +171,14 @@ app.get('/api/health', (request, response) => {
   response.json({ status: 'ok' });
 });
 
-app.post('/api/login', (request, response) => {
+app.post('/api/login', async (request, response) => {
   const { email, password } = request.body;
+  const passwordMatch = await bcrypt.compare(password ?? '', VALID_PASSWORD_HASH);
 
-  if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+  if (email === VALID_EMAIL && passwordMatch) {
+    const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: '7d' });
     return response.json({
-      token: AUTH_TOKEN,
+      token,
       user: { email: VALID_EMAIL, name: 'Moncef' }
     });
   }

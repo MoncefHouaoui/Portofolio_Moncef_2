@@ -10,23 +10,23 @@
       "/assets/images/screen-kasa.png"
     ],
     "gradient": "linear-gradient(135deg, rgba(124, 92, 255, 0.72), rgba(13, 16, 33, 0.82))",
-    "description": "Kasa est un projet d’interface web inspiré d’un site de location immobilière. Il permet de présenter une page d’accueil moderne, une navigation simple et des cartes de logements. Remplace ce texte par ta propre description complète du projet.",
-    "technologies": "React, JavaScript, HTML, CSS. Tu peux compléter avec les outils réellement utilisés pendant le développement du projet.",
-    "feeling": "Ce projet permet de travailler la structure d’une application React, la navigation entre les pages et l’intégration d’une maquette propre. Remplace ce texte par ton ressenti personnel."
+    "description": "Kasa est une application web de location immobilière développée avec React. Elle affiche une page d'accueil présentant des logements sous forme de cartes cliquables, ainsi que des pages de détail pour chaque bien avec un carrousel d'images, une liste d'équipements et un système d'accordéon interactif. Le projet repose entièrement sur une architecture de composants React réutilisables et une navigation gérée par React Router, sans aucune base de données.",
+    "technologies": "React, React Router, JavaScript, HTML, CSS Modules, Vite",
+    "feeling": "Ce projet m'a permis de consolider mes bases en React en travaillant sur la structuration des composants, la gestion des props et la navigation entre les pages. L'exercice d'adapter une maquette Figma en code m'a appris à travailler avec rigueur sur l'aspect visuel d'une interface, en respectant les espacements, les couleurs et la hiérarchie typographique."
   },
   "projet-2": {
     "id": "projet-2",
     "order": 2,
     "title": "Projet 2",
     "name": "Mon Vieux Grimoire",
-    "subtitle": "Application de gestion et de notation de livres.",
+    "subtitle": "Application fullstack de gestion et de notation de livres.",
     "coverImage": "/assets/images/screen-grimoire.png",
     "images": [
       "/assets/images/screen-grimoire.png"
     ],
     "gradient": "linear-gradient(135deg, rgba(0, 212, 255, 0.62), rgba(13, 16, 33, 0.86))",
-    "description": "Mon Vieux Grimoire est une application autour des livres. Elle permet de présenter une bibliothèque, d’ajouter des livres et d’afficher des informations comme le titre, l’auteur, l’année, le genre et la note. Remplace ce texte par ta description complète.",
-    "technologies": "React, JavaScript, Node.js, Express, API REST, HTML, CSS. Tu peux adapter cette liste selon les vraies technologies utilisées.",
-    "feeling": "Ce projet permet de travailler la connexion entre le frontend et le backend, la gestion de données et l’organisation d’une application plus complète. Remplace ce texte par ton ressenti personnel."
+    "description": "Mon Vieux Grimoire est une application fullstack de gestion et de notation de livres. Elle permet à des utilisateurs authentifiés d'ajouter des ouvrages avec leur couverture, de consulter la bibliothèque complète et de noter chaque livre. Le backend expose une API REST sécurisée par JWT, et les images de couverture sont gérées via upload avec Multer. Les données sont persistées dans une base MongoDB.",
+    "technologies": "React, JavaScript, Node.js, Express, MongoDB, Mongoose, JWT, Multer, HTML, CSS",
+    "feeling": "Ce projet a représenté une vraie montée en compétences sur le développement fullstack. Gérer l'authentification avec JWT, sécuriser les routes côté serveur, uploader des images avec Multer et manipuler une base de données MongoDB m'a donné une vision complète du cycle de développement d'une application web, du frontend jusqu'à la persistance des données."
   }
 }

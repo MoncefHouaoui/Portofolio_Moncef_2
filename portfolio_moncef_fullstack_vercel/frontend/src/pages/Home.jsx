@@ -55,8 +55,8 @@ export default function Home() {
           <h1>Bienvenue sur mon portfolio</h1>
           <p>
             Je m’appelle Moncef. Ce portfolio présente mon parcours, mes projets et mon évolution
-            dans le développement web. Le contenu est volontairement simple à modifier pour que tu
-            puisses remplacer les textes par tes propres informations.
+            dans le développement web. Passionné par la création d’interfaces modernes et par la logique
+            backend, je cherche à mettre mes compétences au service de projets concrets et ambitieux.
           </p>
           <div className="hero-actions">
             <Link className="button primary" to="/a-propos">Découvrir mon profil</Link>
