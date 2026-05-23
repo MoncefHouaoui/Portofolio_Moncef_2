@@ -18,6 +18,14 @@ const DATA_FILE = IS_VERCEL ? join('/tmp', 'portfolio-moncef-projects.json') : S
 const UPLOAD_DIR = IS_VERCEL ? join('/tmp', 'portfolio-moncef-uploads') : join(__dirname, 'uploads');
 const VALID_EMAIL = process.env.VALID_EMAIL;
 const JWT_SECRET = process.env.JWT_SECRET;
+
+const missingVars = ['VALID_EMAIL', 'VALID_PASSWORD', 'JWT_SECRET'].filter(k => !process.env[k]);
+if (missingVars.length) {
+  console.error(`[ERREUR] Variables d'environnement manquantes : ${missingVars.join(', ')}`);
+  console.error('Ajoute-les dans ton fichier .env ou dans les settings Vercel.');
+  process.exit(1);
+}
+
 const VALID_PASSWORD_HASH = await bcrypt.hash(process.env.VALID_PASSWORD, 10);
 
 if (!existsSync(UPLOAD_DIR)) {
