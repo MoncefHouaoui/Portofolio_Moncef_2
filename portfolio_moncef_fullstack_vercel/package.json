@@ -10,8 +10,10 @@
     "start": "npm run dev --prefix backend"
   },
   "dependencies": {
+    "bcryptjs": "latest",
     "cors": "latest",
     "express": "latest",
+    "jsonwebtoken": "latest",
     "multer": "latest",
     "nodemailer": "latest"
   },
